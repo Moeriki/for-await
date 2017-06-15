@@ -5,6 +5,10 @@
 
 const forAwait = require('./');
 
+const NOOP = () => {
+  /* */
+};
+
 // tests
 
 it('should throw on non-function', () => {
@@ -55,6 +59,6 @@ it('should iterate over sync iterable and return resolved promise', () => {
 });
 
 it('should throw if source is not an iterable', () => {
-  expect(() => forAwait(() => { /**/ }).of()).toThrow();
-  expect(() => forAwait(() => { /**/ }).of(true)).toThrow();
+  expect(() => forAwait(NOOP).of()).toThrow();
+  expect(() => forAwait(NOOP).of(true)).toThrow();
 });

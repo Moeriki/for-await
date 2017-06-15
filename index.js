@@ -13,10 +13,7 @@ function forAwait(func) {
       let index = 0;
       const next = () => {
         const result = generator.next();
-        return !result.done && result.value
-          .then((value) => func(value, index++, source))
-          .then(next)
-        ;
+        return !result.done && result.value.then((value) => func(value, index++, source)).then(next);
       };
       return next();
     } else if (source[Symbol.iterator]) {
