@@ -1,8 +1,12 @@
 {
   "name": "for-await",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "A tiny JavaScript utility to write for-await.",
+  "keywords": [
+    "async",
+    "await",
+    "for"
+  ],
   "author": "Dieter Luypaert <dieterluypaert@icloud.com>",
   "license": "MIT",
   "main": "index.js",
