@@ -14,9 +14,6 @@
     <a href="https://david-dm.org/moeriki/for-await">
       <img src="https://david-dm.org/moeriki/for-await/status.svg" alt="dependencies Status"></img>
     </a>
-    <a href="https://snyk.io/test/github/moeriki/for-await">
-      <img src="https://snyk.io/test/github/moeriki/for-await/badge.svg" alt="Known Vulnerabilities"></img>
-    </a>
   </p>
 </p>
 
