@@ -12,8 +12,8 @@ function forAwait(func) {
       const generator = source[Symbol.asyncIterator]();
       let index = 0;
       const next = () => {
-        const { value: pendingValue, done } = generator.next();
-        return !done && pendingValue
+        const result = generator.next();
+        return !result.done && result.value
           .then((value) => func(value, index++, source))
           .then(next)
         ;
