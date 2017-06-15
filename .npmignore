@@ -1,0 +1,7 @@
+coverage
+node_modules
+.eslintrc.js
+.gitignore
+.npmignore
+.travis.yml
+index.test.js
