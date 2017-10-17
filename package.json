@@ -17,8 +17,7 @@
   "scripts": {
     "lint": "eslint --cache *.js",
     "test": "npm run lint && jest",
-    "test:coverage": "jest --coverage",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "eslint": "~4.9.0",
