@@ -6,10 +6,11 @@ node_js:
   - "8"
 
 script:
-  - "npm test"
+  - "npm run test:coverage"
 
 after_success:
-  - "npm run coveralls"
+  - "npm install coveralls"
+  - "cat ./coverage/lcov.info | coveralls"
 
 notifications:
   email: false
