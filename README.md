@@ -42,8 +42,8 @@ forAwait((item) => {
 
 ## API
 
-`forAwait( fn:function ).of( source:asyncIterable|syncIterable ):Promise<undefined>`
+`forAwait( func:function ).of( source:asyncIterable|syncIterable ):Promise`
 
-`fn` is called with `item`, `index`, `source`.
+`func` is called with `item`, `index`, `source`.
 
 `of` returns a Promise that resolves when iteration has finished.
