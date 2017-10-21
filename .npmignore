@@ -5,4 +5,5 @@ test/
 .eslintrc.js
 .gitignore
 .npmignore
+.npmrc
 .travis.yml
