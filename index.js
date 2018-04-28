@@ -16,16 +16,8 @@ function forAwait(func) {
         return !result.done && result.value.then((value) => func(value, index++, source)).then(next);
       };
       return next();
-    } else if (source[Symbol.iterator]) {
-      let index = 0;
-      for (const value of source) {
-        func(value, index++, source);
-      }
-    } else {
-      throw new Error(`Expected source to be an iterable. Received ${source}.`);
     }
-    // Return promise for consistency when Array or other sync iterable.
-    return Promise.resolve();
+    throw new Error(`Expected source to be an async iterable. Received ${source}.`);
   }
   return { of };
 }

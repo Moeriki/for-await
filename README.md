@@ -42,7 +42,7 @@ forAwait((item) => {
 
 ## API
 
-`forAwait( func:function ).of( source:asyncIterable|syncIterable ):Promise`
+`forAwait( func:function ).of( source:asyncIterable ):Promise`
 
 `func` is called with `item`, `index`, `source`.
 

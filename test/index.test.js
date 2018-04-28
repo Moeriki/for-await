@@ -33,32 +33,7 @@ it('should iterate over async iterable and resolve', () => {
   });
 });
 
-it('should iterate over array and return resolved promise', () => {
-  const array = [1, 2, 3];
-  const stub = jest.fn();
-  const result = forAwait(stub).of(array);
-  expect(stub).toHaveBeenCalledWith(1, 0, array);
-  expect(stub).toHaveBeenCalledWith(2, 1, array);
-  expect(stub).toHaveBeenCalledWith(3, 2, array);
-  return result;
-});
-
-it('should iterate over sync iterable and return resolved promise', () => {
-  function* generator() {
-    yield 1;
-    yield 2;
-    yield 3;
-  }
-  const stub = jest.fn();
-  const syncIterable = generator();
-  const result = forAwait(stub).of(syncIterable);
-  expect(stub).toHaveBeenCalledWith(1, 0, syncIterable);
-  expect(stub).toHaveBeenCalledWith(2, 1, syncIterable);
-  expect(stub).toHaveBeenCalledWith(3, 2, syncIterable);
-  return result;
-});
-
-it('should throw if source is not an iterable', () => {
+it('should throw if source is not an async iterable', () => {
   expect(() => forAwait(NOOP).of()).toThrow();
   expect(() => forAwait(NOOP).of(true)).toThrow();
 });
