@@ -1,17 +1,23 @@
 'use strict';
 
+const isAsyncIterable = (source) => source != null && Symbol.asyncIterator in source;
+const isGenerator = (source) => typeof source === 'function' && source.constructor.name === 'GeneratorFunction';
+
+// exports
+
 function forAwait(source, iteratee) {
-  if (source == null || source[Symbol.asyncIterator] == null) {
-    throw new Error(`Expected source to be an async iterable, but got ${source}.`);
+  let iterable;
+  if (isAsyncIterable(source)) {
+    iterable = source[Symbol.asyncIterator]();
+  } else if (isGenerator(source)) {
+    iterable = source();
+  } else {
+    throw new Error(`Expected source to be a generator or an async iterable, but got ${source}.`);
   }
-  if (typeof iteratee !== 'function') {
-    throw new Error(`Expected iteratee to be a function, but got ${iteratee}.`);
-  }
-  const generator = source[Symbol.asyncIterator]();
   let index = 0;
   const next = () => {
-    const result = generator.next();
-    return !result.done && result.value.then((value) => iteratee(value, index++, source)).then(next);
+    const result = iterable.next();
+    return !result.done && result.value.then((value) => iteratee(value, index++)).then(next);
   };
   return next();
 }
