@@ -1,6 +1,6 @@
 <p align="center">
   <h3 align="center">for-await</h3>
-  <p align="center">A tiny JavaScript utility to write for-await.<p>
+  <p align="center">An utility to consume async iterables.<p>
   <p align="center">
     <a href="https://www.npmjs.com/package/for-await">
       <img src="https://img.shields.io/npm/v/for-await.svg" alt="npm version">
@@ -19,6 +19,11 @@
 
 ---
 
+This may come in handy if you
+
+1.  don't run NodeJS v10 yet
+2.  want concurrency control
+
 ## Install
 
 ```sh
@@ -32,17 +37,18 @@ const forAwait = require('for-await');
 ## Usage
 
 ```js
-forAwait((item) => {
-  // iteration
-}).of(asyncGenerator()).then(() => {
-  // done
+forAwait(
+  asyncGenerator(),
+  (item) => { /* handle item */ }
+).then(() => {
+  // all done
 });
 
 ```
 
 ## API
 
-`forAwait( func:function ).of( source:asyncIterable ):Promise`
+`forAwait( source:asyncIterable, func:function ) :Promise`
 
 `func` is called with `item`, `index`, `source`.
 

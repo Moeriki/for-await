@@ -5,13 +5,8 @@
 
 const forAwait = require('../');
 
-const NOOP = () => {
-  /* */
-};
-
-// tests
-
-it('should throw on non-function', () => {
+it('should throw if source is not an async iterable', () => {
+  expect(() => forAwait(undefined)).toThrow();
   expect(() => forAwait(null)).toThrow();
 });
 
@@ -24,16 +19,11 @@ it('should iterate over async iterable and resolve', () => {
     },
   };
   const stub = jest.fn();
-  const result = forAwait(stub).of(asyncIterable);
+  const result = forAwait(asyncIterable, stub);
   expect(stub).not.toHaveBeenCalled();
   return result.then(() => {
     expect(stub).toHaveBeenCalledWith(1, 0, asyncIterable);
     expect(stub).toHaveBeenCalledWith(2, 1, asyncIterable);
     expect(stub).toHaveBeenCalledWith(3, 2, asyncIterable);
   });
-});
-
-it('should throw if source is not an async iterable', () => {
-  expect(() => forAwait(NOOP).of()).toThrow();
-  expect(() => forAwait(NOOP).of(true)).toThrow();
 });

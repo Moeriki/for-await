@@ -1,25 +1,19 @@
 'use strict';
 
-function forAwait(func) {
-  if (typeof func !== 'function') {
-    throw new Error(`Expected forAwait() to have been called with a function. Instead received ${func}.`);
+function forAwait(source, iteratee) {
+  if (source == null || source[Symbol.asyncIterator] == null) {
+    throw new Error(`Expected source to be an async iterable, but got ${source}.`);
   }
-  function of(source) {
-    if (source == null) {
-      throw new Error(`Expected source to neqeq null. Received ${source}`);
-    }
-    if (source[Symbol.asyncIterator]) {
-      const generator = source[Symbol.asyncIterator]();
-      let index = 0;
-      const next = () => {
-        const result = generator.next();
-        return !result.done && result.value.then((value) => func(value, index++, source)).then(next);
-      };
-      return next();
-    }
-    throw new Error(`Expected source to be an async iterable. Received ${source}.`);
+  if (typeof iteratee !== 'function') {
+    throw new Error(`Expected iteratee to be a function, but got ${iteratee}.`);
   }
-  return { of };
+  const generator = source[Symbol.asyncIterator]();
+  let index = 0;
+  const next = () => {
+    const result = generator.next();
+    return !result.done && result.value.then((value) => iteratee(value, index++, source)).then(next);
+  };
+  return next();
 }
 
 module.exports = forAwait;
