@@ -24,10 +24,10 @@
     "test": "npm run lint && jest --coverage"
   },
   "devDependencies": {
-    "eslint": "~4.9.0",
+    "eslint": "~4.19.1",
     "eslint-config-muriki": "~9.1.0",
-    "eslint-plugin-import": "~2.7.0",
+    "eslint-plugin-import": "~2.11.0",
     "eslint-plugin-jasmine": "~2.9.1",
-    "jest": "~21.2.1"
+    "jest": "~22.4.3"
   }
 }
