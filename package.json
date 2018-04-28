@@ -12,6 +12,10 @@
   "author": "Dieter Luypaert <dieterluypaert@gmail.com>",
   "license": "MIT",
   "main": "index.js",
+  "files": [
+    "LICENSE",
+    "index.js"
+  ],
   "engines": {
     "node": ">=6"
   },
