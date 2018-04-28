@@ -3,7 +3,7 @@
 
 'use strict';
 
-const forAwait = require('./');
+const forAwait = require('../');
 
 const NOOP = () => {
   /* */
