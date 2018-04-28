@@ -5,10 +5,11 @@
   "keywords": [
     "async",
     "await",
-    "for"
+    "for",
+    "iterable"
   ],
   "repository": "git@github.com:Moeriki/for-await.git",
-  "author": "Dieter Luypaert <dieterluypaert@icloud.com>",
+  "author": "Dieter Luypaert <dieterluypaert@gmail.com>",
   "license": "MIT",
   "main": "index.js",
   "engines": {
