@@ -5,6 +5,7 @@
   "keywords": [
     "async",
     "await",
+    "concurrency",
     "for",
     "iterable"
   ],
@@ -23,7 +24,11 @@
     "lint": "eslint --cache *.js",
     "test": "npm run lint && jest --coverage"
   },
+  "dependencies": {
+    "p-defer": "~1.0.0"
+  },
   "devDependencies": {
+    "delay": "~2.0.0",
     "eslint": "~4.19.1",
     "eslint-config-muriki": "~9.1.0",
     "eslint-plugin-import": "~2.11.0",
